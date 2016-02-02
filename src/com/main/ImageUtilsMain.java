@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.objects.LabeledCheckBox;
 import com.objects.LabeledDirectoryChooser;
 import com.objects.LabeledTextField;
+import com.utils.ImageAggregator;
 
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
@@ -29,7 +30,8 @@ public class ImageUtilsMain extends Application{
 	private static final String VG_LOGO_FPATH = "res/VoyagerGamesLogo-192x192.png";
 	private static final double WINDOW_WIDTH = 400.0;
 	private static final double WINDOW_HEIGHT = 600.0;
-	
+
+	private static final int SPRITE_SIZE_PX = 32; 
 	
 	Stage window;
 	Scene scene;
@@ -129,23 +131,43 @@ public class ImageUtilsMain extends Application{
 	
 	
 	private void eventSubmit(ActionEvent e) {
-		System.out.println();
-		System.out.println("Width\t" + ltfWidth.getTextAsInteger());
-		System.out.println("Height\t" + ltfHeight.getTextAsInteger());
+		System.out.println("\n\n");
+		System.out.println("Width\t" + ltfWidth.getText());
+		System.out.println("Height\t" + ltfHeight.getText());
 		System.out.println("Dir.\t" + ldcDirectory.getDirectory());
 		System.out.println("Making GIF?\t" + lcbWillMakeGif.isSelected());
 		System.out.println("Looping GIF?\t" + lcbWillGifLoop.isSelected());
-		System.out.println("Time Between Frames\t" + ltfTimeBetweenFrames.getTextAsInteger());
+		System.out.println("Time Between Frames\t" + ltfTimeBetweenFrames.getText());
 		System.out.println("Open Dir?\t" + lcbOpenDirOnComplete.isSelected());
+		System.out.println("\n");
 		
-		if(lcbOpenDirOnComplete.isSelected()){
-			try {
-				openDirectory(ldcDirectory.getDirectory());
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+		
+		if(ldcDirectory.getDirectory() != ""){
+			
+			if(lcbWillMakeGif.isSelected()){
+				// Make GIF 
 			}
+			else{
+				// Make just an WxH picture
+				ImageAggregator.run(ltfWidth.getTextAsInteger(), ltfHeight.getTextAsInteger(), SPRITE_SIZE_PX, ldcDirectory.getDirectory());
+			}
+			
+			
+			if(lcbOpenDirOnComplete.isSelected()){
+				try {
+					openDirectory(ldcDirectory.getDirectory());
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
+		} // if(ldcDirectory.getDirectory() != "")
+		else{
+			System.out.println("No directory given!");
 		}
+		
+		
 	} // END
 
 	
