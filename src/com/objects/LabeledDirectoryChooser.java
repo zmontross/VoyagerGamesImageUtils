@@ -39,6 +39,9 @@ public class LabeledDirectoryChooser extends HBox{
 	} // END
 	
 	
+	/**
+	 * Calls forth the DirectoryChooser
+	 * */
 	private void eventDisplayDirChooser(){
 		File dir = dc.showDialog(ownerWindow);
 		if(dir != null){
@@ -47,8 +50,20 @@ public class LabeledDirectoryChooser extends HBox{
 	} // END
 	
 	
+	/**
+	 * Returns a string representing the chosen file directory.
+	 * String comes from the TextField object.
+	 * */
 	public String getDirectory(){
 		return this.tf.getText();
 	} // END
+	
+	/**
+	 * Returns the TextField object.
+	 * */
+	public TextField getTextField(){
+		return this.tf;
+	} // END
+	
 	
 } // END
