@@ -3,14 +3,11 @@ package com.utils;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.IIOException;
-import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageOutputStream;
 import javax.imageio.stream.ImageOutputStream;
 
@@ -32,10 +29,8 @@ public class GifFromSpriteFolders {
 	 * 
 	 * */
 	
-	private static final String DEFAULT_OUTPUT_FILENAME = "\\Output.gif";
+	//private static final String DEFAULT_OUTPUT_FILENAME = "\\Output.gif";
 	
-	
-	private static final List<BufferedImage> listFrames = new ArrayList<BufferedImage>();
 	
 	
 	/**
