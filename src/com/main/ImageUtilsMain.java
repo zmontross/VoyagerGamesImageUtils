@@ -1,6 +1,9 @@
 package com.main;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import com.objects.LabeledCheckBox;
 import com.objects.LabeledDirectoryChooser;
@@ -31,7 +34,7 @@ import javafx.stage.Stage;
 public class ImageUtilsMain extends Application{
 
 	private static final String APP_TITLE = "Voyager Games Image Utilities";
-	private static final String VG_LOGO_FPATH = "res/VoyagerGamesLogo-192x192.png";
+	private static final String VG_LOGO_FPATH = "com/res/VoyagerGamesLogo-192x192.png";
 	private static final double WINDOW_WIDTH = 400.0;
 	private static final double WINDOW_HEIGHT = 600.0;
 
@@ -77,7 +80,8 @@ public class ImageUtilsMain extends Application{
 		
 		// Create a Voyager Games logo
 		ivLogo = new ImageView();
-		ivLogo.setImage( new Image(("file:" + VG_LOGO_FPATH), 96, 96, false, false) );
+		Image img = new Image(this.getClass().getClassLoader().getResourceAsStream("com/res/VoyagerGamesLogo-192x192.png"), 96, 96, false, false);
+		ivLogo.setImage( img );
 		
 		// Create User Parameter inputs
 		ltfWidth = new LabeledTextField("Width: ");
